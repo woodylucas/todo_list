@@ -2,10 +2,6 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 class TodoItem extends Component {
-	constructor(props) {
-		super(props);
-		this.markComplete = this.markComplete.bind(this);
-	}
 	getStyle = () => {
 		return {
 			background: '#f4f4f4',
@@ -15,9 +11,6 @@ class TodoItem extends Component {
 		};
 	};
 
-	markComplete(e) {
-		console.log(this.props);
-	}
 	render() {
 		// Destructuring
 		const {id, title} = this.props.todo;
@@ -30,7 +23,9 @@ class TodoItem extends Component {
 						onChange={this.props.markComplete.bind(this, id)}
 					/>{' '}
 					{title}
-					<button style={btnStyle}>x</button>
+					<button onClick={this.props.delTodo.bind(this, id)} style={btnStyle}>
+						x
+					</button>
 				</p>
 			</div>
 		);
@@ -41,7 +36,7 @@ const btnStyle = {
 	background: '#ff0000',
 	color: '#fff',
 	border: 'none',
-	padding: '6px 8px',
+	padding: '6px 9px',
 	borderRadius: '50%',
 	cursor: 'pointer',
 	float: 'right'
