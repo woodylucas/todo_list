@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Todos from './Components/Todos';
+import Header from './Components/layout/Header';
 import './App.css';
 
 class App extends Component {
@@ -50,6 +51,7 @@ class App extends Component {
 		console.log('state:', this.state.todos);
 		return (
 			<div className="App">
+				<Header />
 				<Todos
 					todos={this.state.todos}
 					markComplete={this.markComplete}
